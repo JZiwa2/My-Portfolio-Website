@@ -1,6 +1,6 @@
 Welcome to my personal portfolio website.
 
-I am Jackson Ziwa, a final-year Bachelor of Science in Computer Science student at the University of Zambia, with an academic focus on Networking and Cybersecurity.
+I am Jackson Ziwa, a final-year Bachelor of Science in Computer Science student at the University of Zambia, with an academic focus in Networking and Cybersecurity.
 
 This portfolio showcases my academic journey, technical skills, projects, and practical experience in the field of technology. It reflects my interest in using technology, data, and analytical thinking to solve real-world problems.
 
