@@ -1,54 +1,29 @@
-# Assignment 1: Responsive Portfolio Website
+Welcome to my personal portfolio website.
 
-**Course:** CSC4035 Web Programming and Technologies
-**Weight:** 5% of final grade
-**Due:** Week 6, Friday 11:59 PM
+I am Jackson Ziwa, a final-year Bachelor of Science in Computer Science student at the University of Zambia, with an academic focus on Networking and Cybersecurity.
 
----
+This portfolio showcases my academic journey, technical skills, projects, and practical experience in the field of technology. It reflects my interest in using technology, data, and analytical thinking to solve real-world problems.
 
-## Overview
+About Me
 
-Create a professional, responsive portfolio website showcasing your skills, projects, and contact information. This assignment assesses your HTML5 and CSS3 skills, including semantic markup, modern layout techniques (Flexbox/Grid), and responsive design principles.
+I am a motivated and analytical Computer Science student with practical experience in IT support, networking, computer systems, software installation, troubleshooting, and technical documentation. I enjoy learning new technologies, solving problems, conducting research, and working on projects that allow me to apply my knowledge in practical environments.
 
-**Important:** No CSS frameworks (Bootstrap, Tailwind, etc.) are allowed. All CSS must be hand-written.
+My interests include:
 
----
+Networking and Cybersecurity
+IT Support and Systems Administration
+Web Development
+Data and Technology
+Research and Analytical Problem-Solving
+Emerging Technologies
+Projects
 
-## Requirements
+This portfolio includes selected academic and personal projects that demonstrate my ability to apply technical knowledge, solve problems, and develop practical solutions.
 
-### Functional Requirements
+Career Goals
 
-Your portfolio must include **4 or more sections**:
+As I approach the completion of my Computer Science degree, I am seeking opportunities where I can apply my technical and analytical skills, gain practical professional experience, and continue developing as a technology professional.
 
-| Section | Required Content |
-|---------|------------------|
-| **Home/Hero** | Your name, tagline, and call-to-action button |
-| **About** | Professional bio (150+ words), profile image, skills list |
-| **Projects** | Minimum 3 project cards with title, description, image, and links |
-| **Contact** | Contact form with validation attributes (name, email, message) |
+I am particularly interested in opportunities that combine technology, data, research, and business, while allowing me to contribute to meaningful projects and learn from experienced professionals.
 
-### Technical Requirements
-
-| Requirement | Description |
-|-------------|-------------|
-| **HTML5** | Valid semantic HTML (header, nav, main, section, article, footer) |
-| **CSS3** | External stylesheet only (no inline styles) |
-| **CSS Variables** | Use custom properties for colors and spacing |
-| **Flexbox** | Use for at least one layout component |
-| **CSS Grid** | Use for at least one layout component |
-| **Responsive** | Mobile-first with minimum 3 breakpoints |
-| **Accessibility** | Alt text, form labels, color contrast, heading hierarchy |
-
-### Breakpoints Required
-
-```css
-/* Mobile-first base styles */
-
-/* Tablet (768px and up) */
-@media (min-width: 768px) { }
-
-/* Desktop (1024px and up) */
-@media (min-width: 1024px) { }
-
-/* Large Desktop (1200px and up) - optional */
-@media (min-width: 1200px) { }
+Thank you for visiting my portfolio.
