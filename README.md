@@ -1,12 +1,11 @@
 Welcome to my personal portfolio website.
 
-I am Jackson Ziwa, a motivated Computer Science student at the University of Zambia, having completed all degree requirements and awaiting graduation (Expected in May, 2027), with an academic focus in Networking and Cybersecurity.
-
+I am Jackson Ziwa, a motivated Computer Science graduand at the University of Zambia, having completed all degree requirements and awaiting graduation (Expected in May, 2027). Specialized in Networking and Cybersecurity with Cisco certifications in Cybersecurity, Networking, Cloud Computing and related skills
 This portfolio showcases my academic journey, technical skills, projects, and practical experience in the field of technology. It reflects my interest in using technology, data, and analytical thinking to solve real-world problems.
 
 About Me
 
-I am a motivated and analytical Computer Science student with practical experience in IT support, networking, computer systems, software installation, troubleshooting, and technical documentation. I enjoy learning new technologies, solving problems, conducting research, and working on projects that allow me to apply my knowledge in practical environments.
+I am a motivated and analytical Computer Science graduand with practical experience in IT support, networking, computer systems, software installation, troubleshooting, and technical documentation. I enjoy learning new technologies, solving problems, conducting research, and working on projects that allow me to apply my knowledge in practical environments.
 
 My interests include:
 
