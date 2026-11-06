@@ -1,62 +1,49 @@
-/*
-============================================================
-ASSIGNMENT 1: RESPONSIVE PORTFOLIO WEBSITE
-CSC4035 Web Programming and Technologies
-Name: Jackson Ziwa
-Student ID: 2021393810
-
-Instructions:
-1. Complete all TODO sections
-2. Use CSS custom properties (variables) for colors and spacing
-3. Use Flexbox for at least one layout component
-4. Use CSS Grid for at least one layout component
-5. Implement mobile-first responsive design
-6. Add at least 3 breakpoints (mobile, tablet, desktop)
-
-DO NOT use CSS frameworks (Bootstrap, Tailwind, etc.)
-============================================================
-*/
+/* ============================================================
+   RESPONSIVE PORTFOLIO WEBSITE
+   CSC4035 Web Programming and Technologies
+   Name: Jackson Ziwa
+   Student ID: 2021393810
+   ============================================================ */
 
 /* ============================================================
    CSS CUSTOM PROPERTIES (VARIABLES)
-   Customized for Jackson Ziwa - IT Specialist & Cybersecurity
    ============================================================ */
 :root {
-    /* Colors - Professional tech theme */
-    --color-primary: #2563eb;              /* Primary blue */
-    --color-primary-dark: #1d4ed8;          /* Darker shade for hover */
-    --color-secondary: #10b981;             /* Green for accents */
-    --color-text: #1f2937;                  /* Main text color - dark gray */
-    --color-text-light: #6b7280;             /* Lighter text - medium gray */
-    --color-background: #f9fafb;             /* Page background - light gray */
-    --color-background-alt: #ffffff;          /* Alternate background - white */
-    --color-border: #e5e7eb;                  /* Border color - light gray */
-    --color-accent: #f59e0b;                  /* Amber for highlights */
-    --color-error: #ef4444;                    /* Red for required fields */
+    /* Colors */
+    --color-primary: #2563eb;
+    --color-primary-dark: #1d4ed8;
+    --color-secondary: #10b981;
+    --color-text: #1f2937;
+    --color-text-light: #6b7280;
+    --color-background: #f9fafb;
+    --color-background-alt: #ffffff;
+    --color-border: #e5e7eb;
+    --color-accent: #f59e0b;
+    --color-error: #ef4444;
 
     /* Typography */
     --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    --font-size-base: 16px;                    /* Base size */
-    --font-size-sm: 0.875rem;                   /* Small text - 14px */
-    --font-size-lg: 1.125rem;                    /* Large text - 18px */
-    --font-size-xl: 1.25rem;                      /* Extra large - 20px */
-    --font-size-2xl: 2rem;                         /* Headings - 32px */
-    --font-size-3xl: 2.5rem;                       /* Large headings - 40px */
+    --font-size-base: 16px;
+    --font-size-sm: 0.875rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: clamp(1.5rem, 4vw, 2rem);
+    --font-size-3xl: clamp(2rem, 6vw, 2.5rem);
 
-    /* Spacing scale */
-    --spacing-xs: 0.5rem;    /* 8px */
-    --spacing-sm: 1rem;      /* 16px */
-    --spacing-md: 1.5rem;    /* 24px */
-    --spacing-lg: 2rem;      /* 32px */
-    --spacing-xl: 3rem;      /* 48px */
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
 
     /* Layout */
-    --max-width: 1200px;                         /* Container max-width */
-    --border-radius: 8px;                         /* Default border radius */
+    --max-width: 1200px;
+    --border-radius: 8px;
 
     /* Transitions */
-    --transition-fast: 0.2s ease;                  /* Fast transition */
-    --transition-normal: 0.3s ease;                /* Normal transition */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
 }
 
 /* ============================================================
@@ -65,20 +52,18 @@ DO NOT use CSS frameworks (Bootstrap, Tailwind, etc.)
 *,
 *::before,
 *::after {
-    /* Reset box-sizing, margin, padding */
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
 html {
-    /* Smooth scrolling and base font size */
     scroll-behavior: smooth;
     font-size: var(--font-size-base);
+    -webkit-text-size-adjust: 100%;
 }
 
 body {
-    /* Base body styles */
     font-family: var(--font-family);
     color: var(--color-text);
     background-color: var(--color-background);
@@ -86,29 +71,30 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
+}
+
+main {
+    flex: 1;
 }
 
 img {
-    /* Make images responsive */
     max-width: 100%;
     height: auto;
     display: block;
 }
 
 a {
-    /* Link styles */
     color: var(--color-primary);
     text-decoration: none;
     transition: color var(--transition-fast);
 }
 
 a:hover {
-    /* Link hover state */
     color: var(--color-primary-dark);
 }
 
 ul {
-    /* List reset */
     list-style: none;
 }
 
@@ -116,7 +102,6 @@ ul {
    UTILITY CLASSES
    ============================================================ */
 .container {
-    /* Container styles */
     width: 100%;
     max-width: var(--max-width);
     margin: 0 auto;
@@ -127,8 +112,9 @@ ul {
    BUTTONS
    ============================================================ */
 .btn {
-    /* Base button styles */
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     padding: 0.75rem 1.5rem;
     border: 2px solid transparent;
     border-radius: var(--border-radius);
@@ -137,71 +123,50 @@ ul {
     text-align: center;
     cursor: pointer;
     transition: all var(--transition-fast);
+    font-family: inherit;
+    white-space: nowrap;
 }
 
 .btn--primary {
-    /* Primary button (filled) */
     background-color: var(--color-primary);
     color: white;
 }
 
 .btn--primary:hover {
-    /* Primary button hover */
     background-color: var(--color-primary-dark);
     transform: translateY(-2px);
     box-shadow: 0 4px 6px rgba(37, 99, 235, 0.3);
 }
 
-.btn--outline {
-    /* Outline button (bordered) */
-    background-color: transparent;
-    border-color: var(--color-text-light);
-    color: var(--color-text);
-}
-
-.btn--outline:hover {
-    /* Outline button hover */
-    border-color: var(--color-primary);
-    color: var(--color-primary);
-    transform: translateY(-2px);
-}
-
 .btn--small {
-    /* Small button variant */
     padding: 0.5rem 1rem;
     font-size: 0.875rem;
 }
 
 /* ============================================================
    HEADER & NAVIGATION
-   Style navigation using Flexbox
-   Requirements:
-   - Fixed or sticky header
-   - Logo on left, nav links on right
-   - Mobile-friendly (links stack or hamburger menu)
    ============================================================ */
 .header {
-    /* Style the header */
     position: sticky;
     top: 0;
     background-color: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
-    padding: var(--spacing-sm) var(--spacing-lg);
+    padding: var(--spacing-sm) var(--spacing-md);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     z-index: 1000;
 }
 
 .nav {
-    /* Use Flexbox for navigation layout */
     display: flex;
     justify-content: space-between;
     align-items: center;
     max-width: var(--max-width);
     margin: 0 auto;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
 }
 
 .nav__logo a {
-    /* Logo styles */
     font-size: 1.5rem;
     font-weight: 700;
     background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
@@ -211,13 +176,12 @@ ul {
 }
 
 .nav__menu {
-    /* Style navigation menu */
     display: flex;
-    gap: var(--spacing-lg);
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
 }
 
 .nav__menu a {
-    /* Navigation link styles */
     color: var(--color-text);
     font-weight: 500;
     position: relative;
@@ -236,7 +200,6 @@ ul {
 }
 
 .nav__menu a:hover::after {
-    /* Navigation link hover */
     width: 100%;
 }
 
@@ -244,8 +207,7 @@ ul {
    HERO SECTION
    ============================================================ */
 .hero {
-    /* Style hero section */
-    min-height: 80vh;
+    min-height: 60vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -260,7 +222,6 @@ ul {
 }
 
 .hero__content h1 {
-    /* Style your name */
     font-size: var(--font-size-3xl);
     color: var(--color-primary);
     margin-bottom: var(--spacing-sm);
@@ -268,7 +229,6 @@ ul {
 }
 
 .hero__tagline {
-    /* Style tagline */
     font-size: var(--font-size-lg);
     color: var(--color-secondary);
     font-weight: 600;
@@ -278,16 +238,13 @@ ul {
 
 /* ============================================================
    ABOUT SECTION
-   Style about section using CSS Grid or Flexbox
    ============================================================ */
 .about {
-    /* Section padding */
     padding: var(--spacing-xl) 0;
     background-color: var(--color-background-alt);
 }
 
 .about h2 {
-    /* Section heading */
     font-size: var(--font-size-2xl);
     color: var(--color-text);
     margin-bottom: var(--spacing-lg);
@@ -307,18 +264,18 @@ ul {
 }
 
 .about__content {
-    /* Use Flexbox for layout */
     display: flex;
     gap: var(--spacing-xl);
     align-items: flex-start;
+    flex-wrap: wrap;
 }
 
 .about__image {
     flex: 0 0 300px;
+    max-width: 300px;
 }
 
 .about__image img {
-    /* Style profile image */
     width: 100%;
     border-radius: var(--border-radius);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
@@ -329,28 +286,29 @@ ul {
     transform: scale(1.05);
 }
 
+.about__text {
+    flex: 1;
+    min-width: 250px;
+}
+
 .about__text p {
-    /* Paragraph styles */
     color: var(--color-text-light);
     margin-bottom: var(--spacing-sm);
 }
 
 .about__text h3 {
-    /* Subheading styles */
     font-size: var(--font-size-lg);
     color: var(--color-text);
     margin: var(--spacing-md) 0 var(--spacing-sm);
 }
 
 .skills-list {
-    /* Style skills list */
     display: flex;
     flex-wrap: wrap;
-    gap: var(--spacing-sm);
+    gap: var(--spacing-xs);
 }
 
 .skills-list li {
-    /* Individual skill badge */
     background-color: var(--color-background);
     color: var(--color-text);
     padding: 0.5rem 1rem;
@@ -361,25 +319,17 @@ ul {
     transition: all var(--transition-fast);
 }
 
-.skills-list li:hover {
-    background-color: var(--color-primary);
-    color: white;
-    border-color: var(--color-primary);
-    transform: translateY(-2px);
-}
+/* Static skill badges — no hover effect since they are not clickable */
 
 /* ============================================================
    PROJECTS SECTION
-   Style projects using CSS Grid
    ============================================================ */
 .projects {
-    /* Section styling */
     padding: var(--spacing-xl) 0;
     background-color: var(--color-background);
 }
 
 .projects h2 {
-    /* Section heading */
     font-size: var(--font-size-2xl);
     color: var(--color-text);
     margin-bottom: var(--spacing-lg);
@@ -398,15 +348,17 @@ ul {
     border-radius: 2px;
 }
 
-.projects__grid {
-    /* Use CSS Grid for project cards */
-    display: grid;
-    grid-template-columns: 1fr;  /* Mobile: 1 column */
-    gap: var(--spacing-lg);
+.projects__grid--single {
+    display: flex;
+    justify-content: center;
+}
+
+.projects__grid--single .project-card {
+    max-width: 900px;
+    width: 100%;
 }
 
 .project-card {
-    /* Style project cards */
     background-color: var(--color-background-alt);
     border-radius: var(--border-radius);
     overflow: hidden;
@@ -417,25 +369,25 @@ ul {
 }
 
 .project-card:hover {
-    /* Card hover effect */
     transform: translateY(-10px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
 .project-card img {
-    /* Project image */
     width: 100%;
-    height: 200px;
-    object-fit: cover;
+    height: 260px;
+    object-fit: contain;
+    background-color: #f1f5f9;
+    border-bottom: 1px solid var(--color-border);
+    padding: 10px;
     transition: transform var(--transition-normal);
 }
 
 .project-card:hover img {
-    transform: scale(1.1);
+    transform: scale(1.03);
 }
 
 .project-card__content {
-    /* Card content area */
     padding: var(--spacing-lg);
     flex: 1;
     display: flex;
@@ -443,37 +395,32 @@ ul {
 }
 
 .project-card__content h3 {
-    /* Project title */
     font-size: 1.25rem;
     color: var(--color-primary);
     margin-bottom: var(--spacing-sm);
 }
 
 .project-card__content p {
-    /* Project description */
     color: var(--color-text-light);
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
     flex: 1;
 }
 
 .project-card__links {
-    /* Links container (Flexbox) */
     display: flex;
     gap: var(--spacing-sm);
+    margin-top: var(--spacing-sm);
 }
 
 /* ============================================================
    CONTACT SECTION
-   Style contact form
    ============================================================ */
 .contact {
-    /* Section styling */
     padding: var(--spacing-xl) 0;
     background-color: var(--color-background-alt);
 }
 
 .contact h2 {
-    /* Section heading */
     font-size: var(--font-size-2xl);
     color: var(--color-text);
     margin-bottom: var(--spacing-lg);
@@ -495,7 +442,6 @@ ul {
 }
 
 .contact__form {
-    /* Style contact form */
     max-width: 600px;
     margin: 0 auto;
     background-color: var(--color-background);
@@ -505,21 +451,22 @@ ul {
 }
 
 .form-group {
-    /* Form group spacing */
     margin-bottom: var(--spacing-md);
 }
 
 .form-group label {
-    /* Label styles */
     display: block;
     margin-bottom: var(--spacing-xs);
     font-weight: 600;
     color: var(--color-text);
 }
 
+.required {
+    color: var(--color-error);
+}
+
 .form-group input,
 .form-group textarea {
-    /* Style form inputs */
     width: 100%;
     padding: 0.75rem;
     border: 2px solid var(--color-border);
@@ -532,7 +479,6 @@ ul {
 
 .form-group input:focus,
 .form-group textarea:focus {
-    /* Focus state */
     outline: none;
     border-color: var(--color-primary);
     box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
@@ -544,16 +490,47 @@ ul {
 }
 
 .form-group textarea {
-    /* Textarea specific styles */
     resize: vertical;
     min-height: 120px;
+}
+
+.contact__info {
+    text-align: center;
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background-color: var(--color-background);
+    border-radius: var(--border-radius);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact__info p {
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-text-light);
+    word-break: break-word;
+}
+
+.contact__info strong {
+    color: var(--color-primary);
+}
+
+/* Phone number link styling - makes it look like normal text but clickable */
+.contact__info a[href^="tel:"] {
+    color: var(--color-text);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.contact__info a[href^="tel:"]:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
 }
 
 /* ============================================================
    FOOTER
    ============================================================ */
 .footer {
-    /* Footer styling */
     background-color: var(--color-text);
     color: white;
     padding: var(--spacing-lg) 0;
@@ -561,12 +538,11 @@ ul {
 }
 
 .footer .container {
-    /* Footer layout (Flexbox) */
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: var(--spacing-md);
+    gap: var(--spacing-sm);
 }
 
 .footer p {
@@ -575,13 +551,12 @@ ul {
 }
 
 .footer__social {
-    /* Social links container */
     display: flex;
-    gap: var(--spacing-md);
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
 }
 
 .footer__social a {
-    /* Social link styles */
     color: white;
     padding: 0.5rem 1rem;
     border-radius: 9999px;
@@ -590,58 +565,43 @@ ul {
 }
 
 .footer__social a:hover {
-    /* Social link hover */
     background-color: var(--color-primary);
     transform: translateY(-2px);
+}
+
+.footer__small {
+    width: 100%;
+    text-align: center;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: var(--spacing-xs);
 }
 
 /* ============================================================
    ANIMATIONS
    ============================================================ */
 @keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* ============================================================
    RESPONSIVE BREAKPOINTS
-   Mobile-first responsive design
-
-   Start with mobile styles above, then add complexity
-   for larger screens below.
    ============================================================ */
 
-/* Tablet (768px and up) */
+/* Tablet (min-width: 768px) */
 @media (min-width: 768px) {
-    /* Tablet styles */
     .hero__content h1 {
         font-size: 3.5rem;
     }
     
     .about__content {
         flex-direction: row;
-    }
-    
-    .projects__grid {
-        /* Tablet: 2 columns */
-        grid-template-columns: repeat(2, 1fr);
     }
     
     .hero__content {
@@ -653,20 +613,15 @@ ul {
     }
 }
 
-/* Desktop (1024px and up) */
+/* Desktop (min-width: 1024px) */
 @media (min-width: 1024px) {
-    /* Desktop styles */
     .hero {
         min-height: 70vh;
     }
     
-    .projects__grid {
-        /* Desktop: 3 columns */
-        grid-template-columns: repeat(3, 1fr);
-    }
-    
     .about__image {
         flex: 0 0 350px;
+        max-width: 350px;
     }
     
     .contact__form {
@@ -674,32 +629,19 @@ ul {
     }
 }
 
-/* Large Desktop (1200px and up) */
-@media (min-width: 1200px) {
-    /* Large desktop styles */
-    .projects__grid {
-        grid-template-columns: repeat(4, 1fr);  /* 4 columns for large screens */
-    }
-    
-    .hero__content {
-        max-width: 1000px;
-    }
-}
-
 /* ============================================================
-   ADDITIONAL STYLES
-   Mobile-specific adjustments
+   MOBILE SPECIFIC ADJUSTMENTS
    ============================================================ */
 
-/* Mobile-specific styles (below 768px) */
+/* Mobile (max-width: 767px) */
 @media (max-width: 767px) {
     .nav {
         flex-direction: column;
-        gap: var(--spacing-sm);
+        gap: var(--spacing-xs);
+        text-align: center;
     }
     
     .nav__menu {
-        flex-wrap: wrap;
         justify-content: center;
         gap: var(--spacing-sm);
     }
@@ -710,7 +652,7 @@ ul {
     
     .about__image {
         flex: 0 0 auto;
-        max-width: 250px;
+        max-width: 100%;
         margin: 0 auto;
     }
     
@@ -728,19 +670,22 @@ ul {
     }
     
     .footer__social {
-        flex-wrap: wrap;
         justify-content: center;
     }
 }
 
-/* Small mobile styles (below 480px) */
+/* Small Mobile (max-width: 480px) */
 @media (max-width: 480px) {
     .hero {
-        min-height: 60vh;
+        min-height: 50vh;
     }
     
     .hero__content h1 {
-        font-size: 2rem;
+        font-size: 1.75rem;
+    }
+    
+    .hero__tagline {
+        font-size: 1rem;
     }
     
     .skills-list li {
@@ -751,9 +696,21 @@ ul {
     .contact__form {
         padding: var(--spacing-md);
     }
+    
+    .project-card img {
+        height: 180px;
+    }
+    
+    .project-card__content {
+        padding: var(--spacing-md);
+    }
 }
 
-/* Accessibility - Reduced motion preference */
+/* ============================================================
+   ACCESSIBILITY & PRINT
+   ============================================================ */
+
+/* Reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
     * {
         animation-duration: 0.01ms !important;

@@ -65,14 +65,15 @@
                         <p>
                             I am eager to leverage my academic knowledge and practical experience to contribute to innovative IT solutions that make a difference in organizations and communities. When I'm not studying or working on projects, I enjoy participating in cybersecurity capture-the-flag competitions and mentoring junior students interested in technology.
                         </p>
-                        <h3>Skills & Competencies</h3>
+                        <h3>Skills &amp; Competencies</h3>
+                        <!-- Static skill badges (not clickable) -->
                         <ul class="skills-list">
                             <li>Microsoft Office Tools</li>
                             <li>Python Programming</li>
                             <li>Web Development (HTML5, CSS3, JavaScript)</li>
-                            <li>Node.js & Express.js</li>
-                            <li>MongoDB & Mongoose</li>
-                            <li>Network Analysis & Troubleshooting</li>
+                            <li>Node.js &amp; Express.js</li>
+                            <li>MongoDB &amp; Mongoose</li>
+                            <li>Network Analysis &amp; Troubleshooting</li>
                             <li>Cybersecurity Fundamentals</li>
                             <li>Cisco Networking</li>
                             <li>Threat Analysis</li>
@@ -88,7 +89,6 @@
             <div class="container">
                 <h2>My Project</h2>
                 <div class="projects__grid projects__grid--single">
-                    <!-- Project Card - UNZA Cribs (Final Year Project) -->
                     <article class="project-card">
                         <img src="images/project-cribs.jpg" alt="UNZA Cribs platform secured by a metric-based digital identity verification system">
                         <div class="project-card__content">
@@ -100,7 +100,7 @@
                                 The system implements a robust 3-factor authentication mechanism, combining password analysis, email-based One-Time Password (OTP) verification, and facial recognition. Each factor is scored, and the scores are combined into a continuous, unbiased "Trust Score" to make access decisions. The platform also includes a comprehensive dashboard for landlords to securely manage their property listings, all protected by this advanced security model.
                             </p>
                             <div class="project-card__links">
-                                <a href="https://unza-cribs.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn--small">Live Demo</a>
+                                <a href="https://your-live-demo-url.com" target="_blank" rel="noopener noreferrer" class="btn btn--small">Live Demo</a>
                             </div>
                         </div>
                     </article>
@@ -112,56 +112,30 @@
         <section id="contact" class="contact">
             <div class="container">
                 <h2>Contact Me</h2>
-                <form class="contact__form" action="#" method="POST">
+                <form class="contact__form" id="contact-form">
                     <div class="form-group">
                         <label for="name">Full Name <span class="required">*</span></label>
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            required
-                            placeholder="John Doe"
-                            minlength="2"
-                        >
+                        <input type="text" id="name" name="name" required placeholder="John Doe" minlength="2">
                     </div>
                     <div class="form-group">
                         <label for="email">Email Address <span class="required">*</span></label>
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            required
-                            placeholder="ziwajackson01@gmail.com"
-                            value="ziwajackson01@gmail.com"
-                        >
+                        <input type="email" id="email" name="email" required placeholder="your.email@example.com">
                     </div>
                     <div class="form-group">
                         <label for="subject">Subject</label>
-                        <input
-                            type="text"
-                            id="subject"
-                            name="subject"
-                            placeholder="e.g., Job Opportunity, Collaboration, Question"
-                        >
+                        <input type="text" id="subject" name="subject" placeholder="e.g., Job Opportunity, Collaboration, Question">
                     </div>
                     <div class="form-group">
                         <label for="message">Message <span class="required">*</span></label>
-                        <textarea
-                            id="message"
-                            name="message"
-                            required
-                            rows="5"
-                            placeholder="Tell me about your project, opportunity, or question..."
-                            minlength="10"
-                        ></textarea>
+                        <textarea id="message" name="message" required rows="5" placeholder="Tell me about your project, opportunity, or question..." minlength="10"></textarea>
                     </div>
                     <button type="submit" class="btn btn--primary">Send Message</button>
                 </form>
                 
                 <div class="contact__info">
-                    <p>Or reach me directly at: <strong>ziwajackson01@gmail.com</strong></p>
+                    <p>Or reach me directly at: <strong><a href="tel:+260974587791">+260 974 587 791</a></strong></p>
                     <p>📍 Lusaka, Zambia</p>
-                    <p>🎓 University of Zambia (UNZA) - BSc Computer Science (Networking & Cybersecurity)</p>
+                    <p>🎓 University of Zambia (UNZA) - BSc Computer Science (Networking &amp; Cybersecurity)</p>
                 </div>
             </div>
         </section>
@@ -172,13 +146,58 @@
         <div class="container">
             <p>&copy; 2026 Jackson Ziwa. All rights reserved.</p>
             <nav class="footer__social">
-                <a href="#" aria-label="GitHub">GitHub</a>
-                <a href="#" aria-label="LinkedIn">LinkedIn</a>
-                <a href="#" aria-label="Twitter">Twitter</a>
-                <a href="#" aria-label="Cisco Networking Academy">Cisco Academy</a>
+                <a href="https://github.com/JZiwa2/My-Portfolio-Website" aria-label="GitHub">GitHub</a>
+                <a href="https://www.linkedin.com/in/jackson-ziwa-b806b7386" aria-label="LinkedIn">LinkedIn</a>
+                <a href="https://www.credly.com/badges/6f150765-a771-4fce-b0ee-20455165b5dc/linked_in?t=thvq5f" aria-label="Certifications">Certifications</a>
             </nav>
-            <p class="footer__small">Built with semantic HTML5 and CSS3 | Last updated: August 2026</p>
         </div>
     </footer>
+
+    <!-- ============================================
+         CONTACT FORM JAVASCRIPT
+         ============================================ -->
+    <script>
+    document.getElementById('contact-form')?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const btn = e.target.querySelector('button[type="submit"]');
+        const originalText = btn.textContent;
+
+        // Show sending state
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+
+        // Gather form data
+        const formData = {
+            name: document.getElementById('name').value.trim(),
+            email: document.getElementById('email').value.trim(),
+            subject: document.getElementById('subject').value.trim(),
+            message: document.getElementById('message').value.trim()
+        };
+
+        try {
+            const res = await fetch('http://localhost:3001/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            });
+
+            const data = await res.json();
+
+            if (data.success) {
+                alert('✅ Your message was sent! I will reply to your email soon.');
+                e.target.reset();
+            } else {
+                alert('❌ ' + (data.message || 'Something went wrong.'));
+            }
+        } catch (err) {
+            alert('❌ Could not send your message. Please check your connection and try again.');
+            console.error(err);
+        } finally {
+            btn.disabled = false;
+            btn.textContent = originalText;
+        }
+    });
+    </script>
 </body>
 </html>
