@@ -6,10 +6,8 @@ const express = require('express');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
 const path = require('path');
-require('dotenv').config({ path: require('path').join(__dirname, '.env') });
 
 const app = express();
-const PORT = process.env.PORT || 3001;
 
 // ============================================
 // MIDDLEWARE
@@ -17,32 +15,17 @@ const PORT = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
-// Serve your portfolio files (so the server can also show the portfolio)
-app.use(express.static(path.join(__dirname, '../')));
+// Serve static files from the 'public' folder
+app.use(express.static(path.join(__dirname, '../public')));
 
 // ============================================
 // EMAIL SETUP
 // ============================================
-console.log('\n========== EMAIL CONFIGURATION ==========');
-console.log('EMAIL_USER:', process.env.EMAIL_USER || 'NOT SET');
-console.log('EMAIL_PASS:', process.env.EMAIL_PASS ? '✓ SET' : '✗ NOT SET');
-console.log('==========================================\n');
-
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
-    }
-});
-
-// Verify email works on startup
-transporter.verify((error, success) => {
-    if (error) {
-        console.error('❌ Nodemailer error:', error.message);
-        console.log('⚠️  Check your EMAIL_USER and EMAIL_PASS in .env');
-    } else {
-        console.log('✅ Nodemailer is ready to send emails');
     }
 });
 
@@ -60,7 +43,6 @@ app.post('/api/contact', async (req, res) => {
         });
     }
 
-    // Simple email format check
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         return res.status(400).json({
             success: false,
@@ -89,7 +71,7 @@ app.post('/api/contact', async (req, res) => {
             `
         });
 
-        // 2. Send auto-reply to the visitor (nice touch!)
+        // 2. Send auto-reply to the visitor
         await transporter.sendMail({
             from: `"Jackson Ziwa" <${process.env.EMAIL_USER}>`,
             to: email,
@@ -109,7 +91,7 @@ app.post('/api/contact', async (req, res) => {
         });
 
         console.log(`✅ Contact form received from ${email}`);
-        res.json({ success: true, message: 'Message sent successfully!' });
+        res.status(200).json({ success: true, message: 'Message sent successfully!' });
 
     } catch (error) {
         console.error('❌ Email send error:', error);
@@ -133,10 +115,6 @@ function escapeHtml(str) {
 }
 
 // ============================================
-// START SERVER
+// EXPORT FOR VERCEL
 // ============================================
-app.listen(PORT, () => {
-    console.log(`\n🚀 Portfolio server running on http://localhost:${PORT}`);
-    console.log(`📧 Contact form endpoint: POST /api/contact`);
-    console.log(`🌐 Your portfolio: http://localhost:${PORT}\n`);
-});
+module.exports = app;
